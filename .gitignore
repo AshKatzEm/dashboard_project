@@ -1,0 +1,4 @@
+.venv
+# weather api credantials
+.env
+__pycache__
