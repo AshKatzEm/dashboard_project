@@ -1,19 +1,36 @@
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Get Weather Conditions</title>
-    <link href="{{ url_for('static', filename='styles/style.css') }}" rel="stylesheet" />
-</head>
+{% extends 'base.html' %}
 
-<body>
-    <h1>Get Weather Conditions</h1>
-    <form action="/weather">
-        <input type="text" name="city" id="city" placeholder="Enter a City" />
-        <button type="submit">Submit</button>
-    </form>
-</body>
-
-</html>
+{% block content %}
+    <h1>{% block title %} Weather {% endblock %}</h1>
+    <table>
+        <tr>
+          <th>Id</th>
+          <th>Current Weather</th>
+          <th>Description of the Weather</th>
+          <th>Temperature (&deg;F)</th>
+          <th>Feels Like (&deg;F)</th>
+          <th>Minimum Temperature (&deg;F)</th>
+          <th>Maximum Temperature (&deg;F)</th>
+          <th>Humidity (%)</th>
+          <th>Wind Speed (mph)</th>
+          <th>Wind Direction (&deg; clockwise from N)</th>
+          <th>Time Stamp (GMT)</th>
+        </tr>
+    {% for fc in weather|reverse %}
+    <tr>
+        <td>{{fc[0]}}</td>
+        <td>{{fc[1]}}</td>
+        <td>{{fc[2]}}</td>
+        <td>{{fc[3]}}</td>
+        <td>{{fc[4]}}</td>
+        <td>{{fc[5]}}</td>
+        <td>{{fc[6]}}</td>
+        <td>{{fc[7]}}</td>
+        <td>{{fc[8]}}</td>
+        <td>{{fc[9]}}</td>
+        <td>{{fc[10]}}</td>
+      </tr>
+    {% endfor %}
+</table> 
+{% endblock %}
