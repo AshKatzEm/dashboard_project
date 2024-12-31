@@ -9,6 +9,7 @@ app = Flask(__name__)
 
 def get_db_connection():
     conn = connect()
+    print('get_db_connection() ran: ', conn)
     return conn
 
 @app.route('/')
